@@ -35,7 +35,7 @@ public class QuoteService {
   @PostConstruct
   protected final void initialize() {
     final ObjectMapper objectMapper = new ObjectMapper();
-    try (final InputStream quotesStream = QuoteResource.class.getResourceAsStream(QUOTES_RESOURCE)) {
+    try (final InputStream quotesStream = QuoteService.class.getResourceAsStream(QUOTES_RESOURCE)) {
       quotes.addAll(objectMapper.readValue(quotesStream,
           objectMapper.getTypeFactory().constructCollectionType(List.class, Quote.class)));
     } catch (IOException e) {

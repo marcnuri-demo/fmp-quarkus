@@ -5,12 +5,14 @@
  */
 package com.marcnuri.demo.fmpquarkus.quote;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by Marc Nuri San Felix <marc@marcnuri.com> on 2019-10-15.
  */
+@RegisterForReflection
 public class Quote implements Serializable {
 
   private static final long serialVersionUID = 7220781254754206616L;

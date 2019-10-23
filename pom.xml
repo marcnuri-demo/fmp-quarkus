@@ -115,6 +115,7 @@
                 </goals>
                 <configuration>
                   <enableHttpUrlHandler>true</enableHttpUrlHandler>
+                  <additionalBuildArgs>-H:IncludeResources=.*\.json$</additionalBuildArgs>
                 </configuration>
               </execution>
             </executions>
@@ -135,6 +136,29 @@
                 </configuration>
               </execution>
             </executions>
+          </plugin>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-maven-plugin</artifactId>
+            <version>${fmp.version}</version>
+            <configuration>
+              <images>
+                <image>
+                  <name>marcnuri/fmp-quarkus</name>
+                  <build>
+                    <contextDir>${project.basedir}</contextDir>
+                    <dockerFile>src/main/docker/Dockerfile.jvm</dockerFile>
+                    <tags>
+                      <tag>native</tag>
+                    </tags>
+                  </build>
+                </image>
+              </images>
+              <authConfig>
+                <username>${env.DOCKER_HUB_USER}</username>
+                <password>${env.DOCKER_HUB_PASSWORD}</password>
+              </authConfig>
+            </configuration>
           </plugin>
         </plugins>
       </build>
