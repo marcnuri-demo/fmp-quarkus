@@ -147,7 +147,7 @@
                   <name>marcnuri/fmp-quarkus</name>
                   <build>
                     <contextDir>${project.basedir}</contextDir>
-                    <dockerFile>src/main/docker/Dockerfile.jvm</dockerFile>
+                    <dockerFile>src/main/docker/Dockerfile.native</dockerFile>
                     <tags>
                       <tag>native</tag>
                     </tags>
