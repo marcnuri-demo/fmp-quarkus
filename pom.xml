@@ -79,7 +79,7 @@
         <configuration>
           <images>
             <image>
-              <name>marcnuri/fmp-quarkus</name>
+              <name>marcnuri/fmp-quarkus:jvm</name>
               <build>
                 <contextDir>${project.basedir}</contextDir>
                 <dockerFile>src/main/docker/Dockerfile.jvm</dockerFile>
@@ -144,12 +144,12 @@
             <configuration>
               <images>
                 <image>
-                  <name>marcnuri/fmp-quarkus</name>
+                  <name>marcnuri/fmp-quarkus:native</name>
                   <build>
                     <contextDir>${project.basedir}</contextDir>
                     <dockerFile>src/main/docker/Dockerfile.native</dockerFile>
                     <tags>
-                      <tag>native</tag>
+                      <tag>latest</tag>
                     </tags>
                   </build>
                 </image>
