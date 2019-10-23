@@ -9,6 +9,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
     <quarkus.version>0.23.2</quarkus.version>
+    <fmp.version>4.3.1</fmp.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -69,6 +70,26 @@
           <systemProperties>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
           </systemProperties>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>fabric8-maven-plugin</artifactId>
+        <version>${fmp.version}</version>
+        <configuration>
+          <images>
+            <image>
+              <name>marcnuri/fmp-quarkus</name>
+              <build>
+                <contextDir>${project.basedir}</contextDir>
+                <dockerFile>src/main/docker/Dockerfile.jvm</dockerFile>
+              </build>
+            </image>
+          </images>
+          <authConfig>
+            <username>${env.DOCKER_HUB_USER}</username>
+            <password>${env.DOCKER_HUB_PASSWORD}</password>
+          </authConfig>
         </configuration>
       </plugin>
     </plugins>

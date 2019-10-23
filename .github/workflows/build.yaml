@@ -25,3 +25,12 @@ jobs:
       - name: Package
         if: success()
         run: ./mvnw package
+      - name: Build Docker Image
+        if: success()
+        run: ./mvnw fabric8:build
+      - name: Push Docker Image
+        if: success()
+        run: ./mvnw fabric8:push
+        env:
+          DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
